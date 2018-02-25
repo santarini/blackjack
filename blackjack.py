@@ -56,11 +56,14 @@ deck = [
 ]
 
 
+
+
 def NewHand():
     i = []
     i = random.sample(range(0,51), 51)
     z = 3
     main(i, z)
+
 
 
 
@@ -71,8 +74,9 @@ def main(i, z):
     PlayerHandValue = 0
 
     print("Dealer Hand: ")
+    print(deck[i[0]][0])
+    print("?")
     while x < y:
-        print(deck[i[x]][0])
         DealerHandValue = DealerHandValue + deck[i[x]][2]
         x +=1
     print("\nPlayer Hand: ")
@@ -80,13 +84,13 @@ def main(i, z):
         print(deck[i[y]][0])
         PlayerHandValue = PlayerHandValue + deck[i[y]][2]
         y +=1
-    print(PlayerHandValue)
-    turn(i, PlayerHandValue, DealerHandValue, z)
+    print("Total", PlayerHandValue)
+    turn(i, x, y, z, PlayerHandValue, DealerHandValue)
 
 
 
 
-def turn(i, PlayerHandValue, DealerHandValue, z):
+def turn(i, x, y, z, PlayerHandValue, DealerHandValue):
     if (PlayerHandValue == 21):
         print("\nBlack Jack!")
         decision = "end"
@@ -94,8 +98,7 @@ def turn(i, PlayerHandValue, DealerHandValue, z):
         print("\nBUSTED!")
         decision = "end"
     if(PlayerHandValue <= 21):
-        decision = ""
-        
+        decision = ""  
     if(decision != "end"):
         decision = input("\nHit or Stay?\n")
         if (decision == "Hit") or (decision == "hit"):
@@ -104,13 +107,28 @@ def turn(i, PlayerHandValue, DealerHandValue, z):
         elif (PlayerHandValue > 21):
             print("Busted")
         elif (decision == "Stay") or (turn == "stay"):
-            print("You stayed")
+            print("You stayed\n")
             decision = "end"
-            result(PlayerHandValue, DealerHandValue)
+            result(i, z, PlayerHandValue, DealerHandValue)
         else:
             print("Huh?")
 
-def result(PlayerHandValue, DealerHandValue):
+
+
+
+def result(i, z, PlayerHandValue, DealerHandValue):
+    x = 0
+    y = 2
+    print("Dealer Hand: ")
+    while x < y:
+        print(deck[i[x]][0])
+        x +=1
+    print("Total", DealerHandValue)
+    print("\nPlayer Hand: ")
+    while y <= z:
+        print(deck[i[y]][0])
+        y += 1
+    print("Total", PlayerHandValue)
     if (PlayerHandValue > DealerHandValue):
         print("You Win!")
     if (DealerHandValue > PlayerHandValue):
