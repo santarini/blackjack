@@ -1,3 +1,5 @@
+import random
+
 deck = [
     ["A♠",1,11],
     ["2♠",2,2],
@@ -53,7 +55,5 @@ deck = [
     ["K♦",52,10]
 ]
 
-i = 0
-while i <= 51:
-    print(deck[i][0])
-    i += 1
+i = random.sample(range(0,51), 2)
+print(deck[i[0]][0],deck[i[1]][0])
