@@ -53,5 +53,7 @@ deck = [
     ["K♦",52,10]
 ]
 
-
-print(deck[2][1])
+i = 0
+while i <= 51:
+    print(deck[i][0])
+    i += 1
