@@ -59,38 +59,37 @@ deck = [
 
 
 def NewHand():
-    i = []
     i = random.sample(range(0,51), 51)
-    z = 3
-    main(i, z)
+    dealerCeiling = 1
+    playerCeiling = 21
+    main(i, playerCeiling,dealerCeiling)
 
 
 
-
-def main(i, z):
+def main(i, playerCeiling,dealerCeiling):
     x = 0
-    y = 2
+    y = 20
     DealerHandValue = 0
     PlayerHandValue = 0
 
     print("Dealer Hand: ")
     print(deck[i[0]][0])
     print("?")
-    while x < y:
+    while x < dealerCeiling:
         DealerHandValue = DealerHandValue + deck[i[x]][2]
         x +=1
     print("\nPlayer Hand: ")
-    while y <= z:
+    while y <= playerCeiling:
         print(deck[i[y]][0])
         PlayerHandValue = PlayerHandValue + deck[i[y]][2]
         y +=1
     print("Total", PlayerHandValue)
-    turn(i, x, y, z, PlayerHandValue, DealerHandValue)
+    turn(i, playerCeiling, dealerCeiling, PlayerHandValue, DealerHandValue)
 
 
 
 
-def turn(i, x, y, z, PlayerHandValue, DealerHandValue):
+def turn(i, playerCeiling, dealerCeiling, PlayerHandValue, DealerHandValue):
     if (PlayerHandValue == 21):
         print("\nBlack Jack!")
         decision = "end"
@@ -102,30 +101,47 @@ def turn(i, x, y, z, PlayerHandValue, DealerHandValue):
     if(decision != "end"):
         decision = input("\nHit or Stay?\n")
         if (decision == "Hit") or (decision == "hit"):
-            z += 1
-            main(i, z)
+            playerCeiling += 1
+            main(i, playerCeiling, dealerCeiling)
         elif (PlayerHandValue > 21):
             print("Busted")
         elif (decision == "Stay") or (turn == "stay"):
             print("You stayed\n")
             decision = "end"
-            result(i, z, PlayerHandValue, DealerHandValue)
+            dealerPlay(i, playerCeiling, dealerCeiling, PlayerHandValue, DealerHandValue)
         else:
             print("Huh?")
 
 
+def dealerPlay(i, playerCeiling, dealerCeiling, PlayerHandValue, DealerHandValue):
+    if (DealerHandValue == 21):
+        print("\n Dealer has Black Jack")
+        result(i, playerCeiling, dealerCeiling, PlayerHandValue, DealerHandValue)
+    elif (DealerHandValue > 21):
+        print("\n Dealer Busts!")
+        result(i, playerCeiling, dealerCeiling, PlayerHandValue, DealerHandValue)
+    elif(DealerHandValue < 16):
+        DealerHandValue = 0
+        dealerCeiling += 1
+        x = 0
+        while x < dealerCeiling:
+            DealerHandValue = DealerHandValue + deck[i[x]][2]
+            x +=1
+        dealerPlay(i, playerCeiling, dealerCeiling, PlayerHandValue, DealerHandValue)
+    elif(DealerHandValue >= 16):
+        result(i, playerCeiling, dealerCeiling, PlayerHandValue, DealerHandValue)
 
 
-def result(i, z, PlayerHandValue, DealerHandValue):
+def result(i, playerCeiling, dealerCeiling, PlayerHandValue, DealerHandValue):
     x = 0
-    y = 2
+    y = 20
     print("Dealer Hand: ")
-    while x < y:
+    while x < dealerCeiling:
         print(deck[i[x]][0])
         x +=1
     print("Total", DealerHandValue)
     print("\nPlayer Hand: ")
-    while y <= z:
+    while y <= playerCeiling:
         print(deck[i[y]][0])
         y += 1
     print("Total", PlayerHandValue)
