@@ -60,6 +60,9 @@ print("***************")
 print("***************")
 print("Dealer hits on 16")
 print("***************")
+print("***************")
+print("Aces are 11")
+print("***************")
 print("Call NewHand() to start")
 
 
