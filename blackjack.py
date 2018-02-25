@@ -55,7 +55,7 @@ deck = [
     ["K♦",52,10]
 ]
 
-i = random.sample(range(0,51), 4)
+i = random.sample(range(0,51), 51)
 Dealerhandvalue = deck[i[0]][2] + deck[i[1]][2]
 Playerhandvalue = deck[i[2]][2] + deck[i[3]][2]
 print("Dealer Hand: ", deck[i[0]][0], deck[i[1]][0])
@@ -63,7 +63,16 @@ print(Dealerhandvalue)
 print("Player Hand: ", deck[i[2]][0], deck[i[3]][0])
 print(Playerhandvalue)
 
+turn = input("\nHit or Stay?\n")
 
+if (turn == "Hit") or (turn == "hit"):
+    Playerhandvalue = deck[i[2]][2] + deck[i[3]][2] + deck[i[4]][2]
+    print("Dealer Hand: ", deck[i[0]][0], deck[i[1]][0])
+    print(Dealerhandvalue)
+    print("Player Hand: ", deck[i[2]][0], deck[i[3]][0], deck[i[4]][0])
+    print(Playerhandvalue)
 
-
-
+elif (turn == "Stay") or (turn == "stay"):
+    print("You hit stay?")
+else:
+    print("Huh?")
