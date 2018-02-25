@@ -60,9 +60,6 @@ print("***************")
 print("***************")
 print("Dealer hits on 16")
 print("***************")
-print("***************")
-print("Aces are 11")
-print("***************")
 print("Call NewHand() to start")
 
 
@@ -157,7 +154,7 @@ def result(i, playerCeiling, dealerCeiling, PlayerHandValue, DealerHandValue):
     if (DealerHandValue > 21):
         win()
     elif (PlayerHandValue > DealerHandValue):
-        wind()
+        win()
     elif (DealerHandValue > PlayerHandValue):
         lose()
     elif (DealerHandValue == PlayerHandValue):
