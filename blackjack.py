@@ -55,7 +55,12 @@ deck = [
     ["K♦",52,10]
 ]
 
-
+print("BLACK JACK")
+print("***************")
+print("***************")
+print("Dealer hits on 16")
+print("***************")
+print("Call NewHand() to start")
 
 
 def NewHand():
@@ -63,6 +68,7 @@ def NewHand():
     dealerCeiling = 1
     playerCeiling = 21
     main(i, playerCeiling,dealerCeiling)
+   
 
 
 
@@ -105,12 +111,12 @@ def turn(i, playerCeiling, dealerCeiling, PlayerHandValue, DealerHandValue):
             main(i, playerCeiling, dealerCeiling)
         elif (PlayerHandValue > 21):
             print("Busted")
-        elif (decision == "Stay") or (turn == "stay"):
+        elif (decision == "Stay") or (decision == "stay"):
             print("You stayed\n")
             decision = "end"
             dealerPlay(i, playerCeiling, dealerCeiling, PlayerHandValue, DealerHandValue)
         else:
-            print("Huh?")
+            print("Huh?\n Type \"hit\" or \"stay\" dude, it's not that difficult")
 
 
 def dealerPlay(i, playerCeiling, dealerCeiling, PlayerHandValue, DealerHandValue):
@@ -120,7 +126,7 @@ def dealerPlay(i, playerCeiling, dealerCeiling, PlayerHandValue, DealerHandValue
     elif (DealerHandValue > 21):
         print("\n Dealer Busts!")
         result(i, playerCeiling, dealerCeiling, PlayerHandValue, DealerHandValue)
-    elif(DealerHandValue < 16):
+    elif(DealerHandValue <= 16):
         DealerHandValue = 0
         dealerCeiling += 1
         x = 0
@@ -145,9 +151,21 @@ def result(i, playerCeiling, dealerCeiling, PlayerHandValue, DealerHandValue):
         print(deck[i[y]][0])
         y += 1
     print("Total", PlayerHandValue)
-    if (PlayerHandValue > DealerHandValue):
-        print("You Win!")
-    if (DealerHandValue > PlayerHandValue):
-        print("You Lose!")
-    if (DealerHandValue == PlayerHandValue):
-        print("Push")
+    if (DealerHandValue > 21):
+        win()
+    elif (PlayerHandValue > DealerHandValue):
+        wind()
+    elif (DealerHandValue > PlayerHandValue):
+        lose()
+    elif (DealerHandValue == PlayerHandValue):
+        tie()
+
+
+def win():
+    print("You Win!")
+
+def lose():
+    print("You Lose!")
+
+def tie():
+    print("Push!")
