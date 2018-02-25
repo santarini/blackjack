@@ -55,28 +55,63 @@ deck = [
     ["K♦",52,10]
 ]
 
-i = random.sample(range(0,51), 51)
-Dealerhandvalue = deck[i[0]][2] + deck[i[1]][2]
-Playerhandvalue = deck[i[2]][2] + deck[i[3]][2]
-print("Dealer Hand: ", deck[i[0]][0], deck[i[1]][0])
-print(Dealerhandvalue)
-print("Player Hand: ", deck[i[2]][0], deck[i[3]][0])
-print(Playerhandvalue)
 
-j = 0
-turn = "a"
-while (turn != "end"):
-    turn = input("\nHit or Stay?\n")
-    if (turn == "Hit") or (turn == "hit"):
-        Playerhandvalue = deck[i[2]][2] + deck[i[3]][2] + deck[i[4]][2]
-        print("Dealer Hand: ", deck[i[0]][0], deck[i[1]][0])
-        print(Dealerhandvalue)
-        print("Player Hand: ", deck[i[2]][0], deck[i[3]][0], deck[i[4]][0])
-        print(Playerhandvalue)
-    elif (turn == "Stay") or (turn == "stay"):
-        print("You stayed")
-        turn = "end"
-    else:
-        print("Huh?")
+def NewHand():
+    i = []
+    i = random.sample(range(0,51), 51)
+    z = 3
+    main(i, z)
 
 
+
+def main(i, z):
+    x = 0
+    y = 2
+    DealerHandValue = 0
+    PlayerHandValue = 0
+
+    print("Dealer Hand: ")
+    while x < y:
+        print(deck[i[x]][0])
+        DealerHandValue = DealerHandValue + deck[i[x]][2]
+        x +=1
+    print("\nPlayer Hand: ")
+    while y <= z:
+        print(deck[i[y]][0])
+        PlayerHandValue = PlayerHandValue + deck[i[y]][2]
+        y +=1
+    print(PlayerHandValue)
+    turn(i, PlayerHandValue, DealerHandValue, z)
+
+
+
+
+def turn(i, PlayerHandValue, DealerHandValue, z):
+    if (PlayerHandValue == 21):
+        print("\nBlack Jack!")
+        decision = "end"
+    if (PlayerHandValue > 21):
+        print("\nBUSTED!")
+        decision = "end"
+    if(PlayerHandValue <= 21):
+        decision = ""
+        
+    if(decision != "end"):
+        decision = input("\nHit or Stay?\n")
+        if (decision == "Hit") or (decision == "hit"):
+            z += 1
+            main(i, z)
+        elif (PlayerHandValue > 21):
+            print("Busted")
+        elif (decision == "Stay") or (turn == "stay"):
+            print("You stayed")
+            decision = "end"
+            result(PlayerHandValue, DealerHandValue)
+        else:
+            print("Huh?")
+
+def result(PlayerHandValue, DealerHandValue):
+    if (PlayerHandValue > DealerHandValue):
+        print("You Win!")
+    if (DealerHandValue > PlayerHandValue):
+        print("You Lose!")
