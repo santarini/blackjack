@@ -63,16 +63,20 @@ print(Dealerhandvalue)
 print("Player Hand: ", deck[i[2]][0], deck[i[3]][0])
 print(Playerhandvalue)
 
-turn = input("\nHit or Stay?\n")
+j = 0
+turn = "a"
+while (turn != "end"):
+    turn = input("\nHit or Stay?\n")
+    if (turn == "Hit") or (turn == "hit"):
+        Playerhandvalue = deck[i[2]][2] + deck[i[3]][2] + deck[i[4]][2]
+        print("Dealer Hand: ", deck[i[0]][0], deck[i[1]][0])
+        print(Dealerhandvalue)
+        print("Player Hand: ", deck[i[2]][0], deck[i[3]][0], deck[i[4]][0])
+        print(Playerhandvalue)
+    elif (turn == "Stay") or (turn == "stay"):
+        print("You stayed")
+        turn = "end"
+    else:
+        print("Huh?")
 
-if (turn == "Hit") or (turn == "hit"):
-    Playerhandvalue = deck[i[2]][2] + deck[i[3]][2] + deck[i[4]][2]
-    print("Dealer Hand: ", deck[i[0]][0], deck[i[1]][0])
-    print(Dealerhandvalue)
-    print("Player Hand: ", deck[i[2]][0], deck[i[3]][0], deck[i[4]][0])
-    print(Playerhandvalue)
 
-elif (turn == "Stay") or (turn == "stay"):
-    print("You hit stay?")
-else:
-    print("Huh?")
