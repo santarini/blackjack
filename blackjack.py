@@ -1,7 +1,7 @@
 import random
 
 deck = [
-    ["A♠",1,11],
+    ["A♠",1,11 or 1],
     ["2♠",2,2],
     ["3♠",3,3],
     ["4♠",4,4],
@@ -14,7 +14,7 @@ deck = [
     ["J♠",11,10],
     ["Q♠",12,10],
     ["K♠",13,10],
-    ["A♥",14,11],
+    ["A♥",14,11 or 1],
     ["2♥",15,2],
     ["3♥",16,3],
     ["4♥",17,4],
@@ -27,7 +27,7 @@ deck = [
     ["J♥",24,10],
     ["Q♥",25,10],
     ["K♥",26,10],
-    ["A♣",27,11],
+    ["A♣",27,11 or 1],
     ["2♣",28,2],
     ["3♣",29,3],
     ["4♣",30,4],
@@ -40,7 +40,7 @@ deck = [
     ["J♣",37,10],
     ["Q♣",38,10],
     ["K♣",39,10],
-    ["A♦",40,11],
+    ["A♦",40,11 or 1],
     ["2♦",41,2],
     ["3♦",42,3],
     ["4♦",43,4],
@@ -149,3 +149,5 @@ def result(i, playerCeiling, dealerCeiling, PlayerHandValue, DealerHandValue):
         print("You Win!")
     if (DealerHandValue > PlayerHandValue):
         print("You Lose!")
+    if (DealerHandValue == PlayerHandValue):
+        print("Push")
