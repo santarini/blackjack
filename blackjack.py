@@ -64,7 +64,7 @@ print("Call NewHand() to start")
 
 
 def NewHand():
-    i = random.sample(range(0,51), 51)
+    i = random.sample(range(1,53), 52)
     dealerCeiling = 1
     playerCeiling = 27
     main(i, playerCeiling,dealerCeiling)
