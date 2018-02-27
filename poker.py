@@ -64,6 +64,7 @@ def NewHand():
     while i < j:
         PlayerHand.append(ShuffledDeck[i])
         i +=1
+    PlayerHand.sort()
     print(PlayerHand)
 
     DealerHand = []
@@ -72,6 +73,7 @@ def NewHand():
     while i < j:
         DealerHand.append(ShuffledDeck[i])
         i +=1
+    DealerHand.sort()
     print(DealerHand)
     
 NewHand()
