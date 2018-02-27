@@ -66,7 +66,7 @@ print("Call NewHand() to start")
 def NewHand():
     i = random.sample(range(0,51), 51)
     dealerCeiling = 1
-    playerCeiling = 21
+    playerCeiling = 27
     main(i, playerCeiling,dealerCeiling)
    
 
@@ -74,7 +74,7 @@ def NewHand():
 
 def main(i, playerCeiling,dealerCeiling):
     x = 0
-    y = 20
+    y = 26
     DealerHandValue = 0
     PlayerHandValue = 0
 
@@ -140,7 +140,7 @@ def dealerPlay(i, playerCeiling, dealerCeiling, PlayerHandValue, DealerHandValue
 
 def result(i, playerCeiling, dealerCeiling, PlayerHandValue, DealerHandValue):
     x = 0
-    y = 20
+    y = 26
     print("Dealer Hand: ")
     while x < dealerCeiling:
         print(deck[i[x]][0])
