@@ -56,31 +56,22 @@ deck = [
 ]
 
 def NewHand():
-    i = random.sample(range(0,51), 51)
-    dealerCeiling = 1
-    playerCeiling = 21
-    main(i, playerCeiling,dealerCeiling)
-   
+    ShuffledDeck = random.sample(range(1,53), 52)
 
+    PlayerHand = []
+    i=0
+    j=5
+    while i < j:
+        PlayerHand.append(ShuffledDeck[i])
+        i +=1
+    print(PlayerHand)
 
-
-def main(i, playerCeiling,dealerCeiling):
-    x = 0
-    y = 20
-    DealerHandValue = 0
-    PlayerHandValue = 0
-
-    print("Dealer Hand: ")
-    print(deck[i[0]][0])
-    print("?")
-    while x < dealerCeiling:
-        DealerHandValue = DealerHandValue + deck[i[x]][2]
-        x +=1
-    print("\nPlayer Hand: ")
-    while y <= playerCeiling:
-        print(deck[i[y]][0])
-        PlayerHandValue = PlayerHandValue + deck[i[y]][2]
-        y +=1
-    print("Total", PlayerHandValue)
-    turn(i, playerCeiling, dealerCeiling, PlayerHandValue, DealerHandValue)
-
+    DealerHand = []
+    i=26
+    j=31
+    while i < j:
+        DealerHand.append(ShuffledDeck[i])
+        i +=1
+    print(DealerHand)
+    
+NewHand()
